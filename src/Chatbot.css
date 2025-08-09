@@ -1,0 +1,134 @@
+/* Page/frame */
+.chatbox-wrapper {
+  --cs-primary: #9aa3af; /* was blue; now gray */
+}
+/* Centered “card” */
+.chatbox-main {
+  width: 900px;
+  height: 80vh;
+  min-height: 520px;
+  background: #0c0a32;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+}
+
+/* Ensure chat surface is white */
+.chatbot-message-list,
+.cs-message-list {
+  background: #2b2b2d !important;
+  padding: 12px 12px 0;
+}
+
+/* BUBBLES */
+.cs-message--incoming .cs-message__content {
+  background: #0d0d0e !important;   /* light gray */
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 10px 15px !important;
+  box-shadow: none !important;
+}
+.cs-message--outgoing .cs-message__content {
+  background: #7BA7D3 !important;   /* soft blue */
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 10px 15px !important;
+  box-shadow: none !important;
+}
+
+/* Typing indicator */
+.cs-typing-indicator,
+.cs-message-list__typing-indicator-container {
+  background: #2e3034 !important;
+  color: #a7abb1 !important;
+  border-top: 1px solid #3a3f46 !important;
+  width: 100%;
+}
+
+/* INPUT AREA */
+.chatbot-input,
+.cs-message-input {
+  background: #1a1d23 !important;
+  border-top: 1px solid #e6e8ef !important;
+  padding: 12px !important;
+}
+
+.cs-message-input__content-editor-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.cs-message-input__content-editor {
+  background: #373640 !important;
+  color: #e6e7eb !important;
+  border: 1px solid #e6e8ef !important;
+  border-radius: 9999px !important; /* pill */
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+}
+.cs-message-input__content-editor:focus {
+  outline: none !important;
+  border-color: #44484d !important; /* subtle blue focus */
+}
+
+.cs-message-input__content-editor[data-placeholder]:empty::before {
+  color: #9aa3af !important;
+  opacity: 0.7;
+}
+
+.cs-message-input__content-editor-wrapper .cs-button {
+  opacity: .85;
+}
+.cs-message-input__content-editor-wrapper .cs-button:hover {
+  opacity: 1;
+}
+
+/* Neutralize global Chatscope accent just in case */
+.chatbox-wrapper { --cs-primary: #9aa3af; }
+
+/* The container around the editor (NOT the wrapper) */
+.cs-message-input__content-editor-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 10px !important; /* space around the pill */
+}
+
+/* Wrapper should own bg/border and clip inner edges */
+.cs-message-input__content-editor-wrapper {
+  background: #1a1d23 !important;            /* <-- match your bar, not transparent */
+
+  box-shadow: none !important;
+  overflow: hidden !important;                /* clips the blue arcs */
+}
+.cs-message-input__content-editor-wrapper:before,
+.cs-message-input__content-editor-wrapper:after {
+  content: none !important;                   /* kill gradients if any */
+}
+.cs-message-input__content-editor-wrapper:focus-within {
+  border-color: #555b63 !important;           /* no blue on focus */
+  box-shadow: none !important;
+}
+
+/* Remove all light/white borders globally in the chat UI */
+.chatbox-main,
+.chatbot-message-list,
+.cs-message-list,
+.cs-message-input,
+.cs-message-input__content-editor-wrapper,
+.cs-message-input__content-editor,
+.cs-typing-indicator,
+.cs-message-list__typing-indicator-container,
+.cs-message--incoming .cs-message__content,
+.cs-message--outgoing .cs-message__content {
+  border: 1px solid #3f4144 !important; 
+  box-shadow: none !important; /* in case border shadows are used */
+}
+
+/* Also remove top border lines from the input & typing indicator area */
+.cs-message-input {
+  border-top: none !important;
+}
+.cs-message-list__typing-indicator-container {
+  border-top: 1px solid #1a1d23 !important; 
+}
