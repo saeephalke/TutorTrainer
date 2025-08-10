@@ -78,7 +78,7 @@ function Chatbox() {
         >
           Send
         </button>
-        <br /> <br />
+        <br /> 
       </div>
       <div className="chatbox-wrapper">
         <MainContainer className="chatbox-main">
@@ -104,6 +104,10 @@ function Chatbox() {
             />
           </ChatContainer>
         </MainContainer>
+            <br/>
+        <button onClick={() => window.location.href = '/'}> 
+          Go Home
+        </button>
       </div></>
   );
 }
