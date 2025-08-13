@@ -11,23 +11,14 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./Chatbot.css"; // import the styles for the chatbox
 import { useState } from "react";
+import { generateStudent } from "../backend/studentgenerator";
 
 function Chatbox() {
-  const [messages, setMessages] = useState([
-    {
-      message: "Hello!",
-      sender: "computer",
-      direction: "incoming"
-    },
-    {
-      message: "Hi there!",
-      sender: "user",
-      direction: "outgoing"
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const [grade, setGrade] = useState(null);
   const [subject, setSubject] = useState(null);
+  const [student, setStudent] = useState(null);
 
   const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
     , "College", "Graduate School"
@@ -76,7 +67,7 @@ function Chatbox() {
             )
           }
         >
-          Send
+          Create Student Persona
         </button>
         <br /> 
       </div>
