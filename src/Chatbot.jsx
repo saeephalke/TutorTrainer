@@ -11,20 +11,26 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./Chatbot.css"; // import the styles for the chatbox
 import { useState } from "react";
-import { generateStudent } from "../backend/studentgenerator";
+import { useEffect } from "react";
 
 function Chatbox() {
   const [messages, setMessages] = useState([]);
 
-  const [grade, setGrade] = useState(null);
-  const [subject, setSubject] = useState(null);
+  const [grade, setGrade] = useState("");
+  const [subject, setSubject] = useState("");
   const [student, setStudent] = useState(null);
+
+  useEffect(() => {
+  if (!student) return;
+  handleComputerSend(`Hello I'm ${student.name}, a ${student.age}-year-old in ${student.grade} learning ${student.tutor_subject}.`);
+  console.log(student);
+  }, [student]);
 
   const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
     , "College", "Graduate School"
   ];
 
-  const handleSend = (innerMessage) => {
+  const handleUserSend = (innerMessage) => {
     setMessages([
       ...messages,
       {
@@ -34,6 +40,46 @@ function Chatbox() {
       }
     ]);
   };
+
+  const handleComputerSend = (innerMessage) => {
+    setMessages([
+      ...messages,
+      {
+        message: innerMessage,
+        sender: "computer",
+        direction: "incoming"
+      }
+    ]);
+  };
+
+
+  const handleGenerateStudent = async () => {
+    if (grade === "" || subject === "") {
+      alert("Please select a grade level and enter a subject.");
+      return;
+    } 
+
+    handleComputerSend(`Generating student persona in ${grade} studying ${subject}...`);
+
+    try{
+      const res = await fetch("http://localhost:4000/generatestudent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ grade, subject }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to generate student persona");
+      }
+
+      const data = await res.json();
+      setStudent(data);
+    } catch (error) {
+      console.error("Error generating student persona:", error);
+    }
+  }
 
   return (
     <>
@@ -47,7 +93,7 @@ function Chatbox() {
             Select Grade Level
           </option>
           {gradeLevels.map((level, index) => (
-            <option key={index} value={index}>
+            <option key={level} value={level}>
               {level}
             </option>
           ))}
@@ -62,9 +108,7 @@ function Chatbox() {
         </label>
         <button
           onClick={() =>
-            handleSend(
-              `Selected Grade: ${gradeLevels[grade]}, Subject: ${subject}`
-            )
+            handleGenerateStudent()
           }
         >
           Create Student Persona
@@ -88,7 +132,7 @@ function Chatbox() {
               ))}
             </MessageList>
             <MessageInput
-              onSend={handleSend}
+              onSend={handleUserSend}
               placeholder="Type message here"
               attachButton={false}
               sendDisabled={false} // keep send via Enter
