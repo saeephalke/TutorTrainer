@@ -1,4 +1,3 @@
-// use the chatscope package for the chat UI
 import {
   MainContainer,
   ChatContainer,
@@ -8,7 +7,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import "./Chatbot.css"; // import the styles for the chatbox
+import "./Chatbot.css"; 
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -28,11 +27,10 @@ function Chatbox() {
 
   useEffect(() => {
     if (!aiResponse) {
-      console.log("No AI response yet");
       return;
     }
     handleComputerSend(aiResponse);
-    setAIResponse(null); // Reset AI response after sending
+    setAIResponse(null); 
   }, [aiResponse]);
 
 

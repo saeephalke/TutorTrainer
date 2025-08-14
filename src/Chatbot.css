@@ -1,8 +1,6 @@
-/* Page/frame */
 .chatbox-wrapper {
-  --cs-primary: #242424; /* was blue; now gray */
+  --cs-primary: #242424; 
 }
-/* Centered “card” */
 .chatbox-main {
   width: 900px;
   height: 70vh;
@@ -13,7 +11,6 @@
   box-shadow: 0 8px 32px rgba(0,0,0,.35);
 }
 
-/* Remove all borders, outlines, and background from Chatscope containers */
 .cs-main-container,
 .cs-chat-container,
 .cs-message-list {
@@ -23,11 +20,10 @@
   box-shadow: none !important;
 }
 
-/* Also override default input and scroll styles */
 .cs-message-input {
   border: none !important;
   outline: none !important;
-  background-color: #1a1a1a !important; /* match your dark bg */
+  background-color: #1a1a1a !important; 
   box-shadow: none !important;
 }
 
@@ -38,30 +34,31 @@
 .cs-scrollable {
   background-color: transparent !important;
 }
-/* Ensure chat surface is white */
 .chatbot-message-list,
 .cs-message-list {
   background: #1a1a1a !important;
   padding: 12px 12px 0;
 }
 
-/* BUBBLES */
 .cs-message--incoming .cs-message__content {
-  background: #2e3034 !important;   /* light gray */
+  background: #2e3034 !important; 
   color: #ffffff !important;
   border-radius: 24px !important;
   padding: 10px 15px !important;
   box-shadow: none !important;
+  margin-bottom: 15px;
+  text-align: left;
 }
 .cs-message--outgoing .cs-message__content {
-  background: #7BA7D3 !important;   /* soft blue */
+  background: #7BA7D3 !important;  
   color: #ffffff !important;
   border-radius: 24px !important;
   padding: 10px 15px !important;
   box-shadow: none !important;
+  margin-bottom: 15px;
+  text-align: left; 
 }
 
-/* Typing indicator */
 .cs-typing-indicator,
 .cs-message-list__typing-indicator-container {
   background: #2e3034 !important;
@@ -70,7 +67,6 @@
   width: 100%;
 }
 
-/* INPUT AREA */
 .chatbot-input,
 .cs-message-input {
   background: #0a0a0a !important;
@@ -87,13 +83,14 @@
   background: #2e3034 !important;
   color: #e6e7eb !important;
   border: 1px solid #242424 !important;
-  border-radius: 9999px !important; /* pill */
+  border-radius: 9999px !important;
   padding: 10px 14px !important;
   box-shadow: none !important;
+  text-align: left !important;
 }
 .cs-message-input__content-editor:focus {
   outline: none !important;
-  border-color: #242424 !important; /* subtle blue focus */
+  border-color: #242424 !important; 
 }
 
 .cs-message-input__content-editor[data-placeholder]:empty::before {
@@ -108,34 +105,30 @@
   opacity: 1;
 }
 
-/* Neutralize global Chatscope accent just in case */
 .chatbox-wrapper { --cs-primary: #242424; }
 
-/* The container around the editor (NOT the wrapper) */
 .cs-message-input__content-editor-container {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 10px !important; /* space around the pill */
+  padding: 0 10px !important; 
 }
 
-/* Wrapper should own bg/border and clip inner edges */
 .cs-message-input__content-editor-wrapper {
-  background: #0a0a0a !important;            /* <-- match your bar, not transparent */
+  background: #0a0a0a !important;            
 
   box-shadow: none !important;
-  overflow: hidden !important;                /* clips the blue arcs */
+  overflow: hidden !important;                
 }
 .cs-message-input__content-editor-wrapper:before,
 .cs-message-input__content-editor-wrapper:after {
-  content: none !important;                   /* kill gradients if any */
+  content: none !important;                  
 }
 .cs-message-input__content-editor-wrapper:focus-within {
-  border-color: #1a1a1a !important;           /* no blue on focus */
+  border-color: #1a1a1a !important;          
   box-shadow: none !important;
 }
 
-/* Remove all light/white borders globally in the chat UI */
 .chatbox-main,
 .chatbot-message-list,
 .cs-message-list,
@@ -147,10 +140,9 @@
 .cs-message--incoming .cs-message__content,
 .cs-message--outgoing .cs-message__content {
   border: 0px solid #3f4144 !important; 
-  box-shadow: none !important; /* in case border shadows are used */
+  box-shadow: none !important;
 }
 
-/* Also remove top border lines from the input & typing indicator area */
 .cs-message-input {
   border-top: none !important;
 }
