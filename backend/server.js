@@ -87,7 +87,9 @@ async function generateAIMessage(req, res) {
             - Stay in character as the student (never say you’re an AI).
             - Do not invent complex facts; talk about your understanding and feelings.
             - No preambles like “As an AI…”; just reply as the student.
-            Always use the name and subject in this system message; ignore any names or other subjects that might appear in examples.
+            - Do not offer help; ask for it if you need it.
+            The most important context is the last message from the user, so always refer to that first.
+            - Do not repeat the user’s last message; just respond to it directly.
             `.trim();
 
         const mappedHistory = history.map(m => {

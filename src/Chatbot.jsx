@@ -40,14 +40,15 @@ function Chatbox() {
   ];
 
   const handleUserSend = async (innerMessage) => {
-    setMessages([
+    const newHistory = [
       ...messages,
       {
         message: innerMessage,
         sender: "user",
         direction: "outgoing"
       }
-    ]);
+    ];
+    setMessages(newHistory);
 
     const res = await fetch("http://localhost:4000/generateaimessage", {
       method: "POST",
@@ -55,18 +56,17 @@ function Chatbox() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        messages: messages,
+        messages: newHistory,
         student: student || {}
       }),
     });
 
-    if(!res.ok) {
+    if (!res.ok) {
       console.error("Failed to generate AI message");
       return;
     }
     const data = await res.json();
     setAIResponse(data.message);
-    
   };
 
   const handleComputerSend = (innerMessage) => {
