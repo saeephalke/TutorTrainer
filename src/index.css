@@ -35,6 +35,12 @@ h1 {
   line-height: 1.1;
 }
 
+h2{
+  font-size: 1.8em;
+  line-height: 1.1;
+  margin-top: 1rem;
+}
+
 button {
   border-radius: 20px;
   border: 1px solid transparent;
@@ -42,9 +48,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #0a0a0a;
   cursor: pointer;
   transition: border-color 0.25s;
+  height: 40px;
 }
 button:hover {
   border-color: #646cff;
@@ -73,7 +80,7 @@ input, select{
   border-radius: 30px;
   height: 40px;
   padding: 0 20px;
-  margin: 1rem;
+  background-color: #0a0a0a;
 }
 
 .home_p{
@@ -82,3 +89,12 @@ input, select{
   margin-right: 20%;
   margin-left: 20%;
 }
+
+.buttons-div{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;  
+  margin: 1.5rem;
+  color:#888;
+}
+

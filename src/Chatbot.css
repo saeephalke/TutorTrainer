@@ -1,6 +1,6 @@
 /* Page/frame */
 .chatbox-wrapper {
-  --cs-primary: #9aa3af; /* was blue; now gray */
+  --cs-primary: #242424; /* was blue; now gray */
 }
 /* Centered “card” */
 .chatbox-main {
@@ -13,16 +13,41 @@
   box-shadow: 0 8px 32px rgba(0,0,0,.35);
 }
 
+/* Remove all borders, outlines, and background from Chatscope containers */
+.cs-main-container,
+.cs-chat-container,
+.cs-message-list {
+  border: none !important;
+  outline: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Also override default input and scroll styles */
+.cs-message-input {
+  border: none !important;
+  outline: none !important;
+  background-color: #1a1a1a !important; /* match your dark bg */
+  box-shadow: none !important;
+}
+
+.cs-message-input__content-editor {
+  background-color: transparent !important;
+}
+
+.cs-scrollable {
+  background-color: transparent !important;
+}
 /* Ensure chat surface is white */
 .chatbot-message-list,
 .cs-message-list {
-  background: #2b2b2d !important;
+  background: #1a1a1a !important;
   padding: 12px 12px 0;
 }
 
 /* BUBBLES */
 .cs-message--incoming .cs-message__content {
-  background: #0d0d0e !important;   /* light gray */
+  background: #2e3034 !important;   /* light gray */
   color: #ffffff !important;
   border-radius: 24px !important;
   padding: 10px 15px !important;
@@ -48,8 +73,8 @@
 /* INPUT AREA */
 .chatbot-input,
 .cs-message-input {
-  background: #1a1d23 !important;
-  border-top: 1px solid #e6e8ef !important;
+  background: #0a0a0a !important;
+  border-top: 1px solid #242424 !important;
   padding: 12px !important;
 }
 
@@ -59,16 +84,16 @@
 }
 
 .cs-message-input__content-editor {
-  background: #373640 !important;
+  background: #2e3034 !important;
   color: #e6e7eb !important;
-  border: 1px solid #e6e8ef !important;
+  border: 1px solid #242424 !important;
   border-radius: 9999px !important; /* pill */
   padding: 10px 14px !important;
   box-shadow: none !important;
 }
 .cs-message-input__content-editor:focus {
   outline: none !important;
-  border-color: #44484d !important; /* subtle blue focus */
+  border-color: #242424 !important; /* subtle blue focus */
 }
 
 .cs-message-input__content-editor[data-placeholder]:empty::before {
@@ -84,7 +109,7 @@
 }
 
 /* Neutralize global Chatscope accent just in case */
-.chatbox-wrapper { --cs-primary: #9aa3af; }
+.chatbox-wrapper { --cs-primary: #242424; }
 
 /* The container around the editor (NOT the wrapper) */
 .cs-message-input__content-editor-container {
@@ -96,7 +121,7 @@
 
 /* Wrapper should own bg/border and clip inner edges */
 .cs-message-input__content-editor-wrapper {
-  background: #1a1d23 !important;            /* <-- match your bar, not transparent */
+  background: #0a0a0a !important;            /* <-- match your bar, not transparent */
 
   box-shadow: none !important;
   overflow: hidden !important;                /* clips the blue arcs */
@@ -106,7 +131,7 @@
   content: none !important;                   /* kill gradients if any */
 }
 .cs-message-input__content-editor-wrapper:focus-within {
-  border-color: #555b63 !important;           /* no blue on focus */
+  border-color: #1a1a1a !important;           /* no blue on focus */
   box-shadow: none !important;
 }
 
@@ -121,7 +146,7 @@
 .cs-message-list__typing-indicator-container,
 .cs-message--incoming .cs-message__content,
 .cs-message--outgoing .cs-message__content {
-  border: 1px solid #3f4144 !important; 
+  border: 0px solid #3f4144 !important; 
   box-shadow: none !important; /* in case border shadows are used */
 }
 
@@ -130,5 +155,5 @@
   border-top: none !important;
 }
 .cs-message-list__typing-indicator-container {
-  border-top: 1px solid #1a1d23 !important; 
+  border-top: 1px solid #1a1a1a !important; 
 }

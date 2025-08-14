@@ -35,9 +35,11 @@ function Chatbox() {
     setAIResponse(null); // Reset AI response after sending
   }, [aiResponse]);
 
+
   const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
     , "College", "Graduate School"
   ];
+
 
   const handleUserSend = async (innerMessage) => {
     const newHistory = [
@@ -49,6 +51,7 @@ function Chatbox() {
       }
     ];
     setMessages(newHistory);
+
 
     const res = await fetch("http://localhost:4000/generateaimessage", {
       method: "POST",
@@ -68,6 +71,7 @@ function Chatbox() {
     const data = await res.json();
     setAIResponse(data.message);
   };
+
 
   const handleComputerSend = (innerMessage) => {
     setMessages([
@@ -109,10 +113,20 @@ function Chatbox() {
     }
   }
 
+  const handleClearChat = () => {
+    setMessages([]);
+    setStudent(null);
+    setAIResponse(null);
+    setGrade("");
+    setSubject("");
+  };
+
   return (
     <>
-      <div>
+      <header>
         <h2>Select a grade level and subject</h2>
+
+        <div className="buttons-div">
         <select
           value={grade}
           onChange={(e) => setGrade(e.target.value)}
@@ -141,8 +155,9 @@ function Chatbox() {
         >
           Create Student Persona
         </button>
-        <br /> 
       </div>
+
+      </header>
       <div className="chatbox-wrapper">
         <MainContainer className="chatbox-main">
           <ChatContainer>
@@ -166,12 +181,23 @@ function Chatbox() {
               sendDisabled={false} // keep send via Enter
             />
           </ChatContainer>
+          
         </MainContainer>
-            <br/>
+
+      </div>
+
+      <footer className="buttons-div">
         <button onClick={() => window.location.href = '/'}> 
           Go Home
         </button>
-      </div></>
+        <button onClick={() => handleClearChat()}>
+          Clear Chat
+        </button>
+        <button>
+          Get Feedback
+        </button></footer>
+      
+      </>
   );
 }
 
