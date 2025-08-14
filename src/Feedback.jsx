@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -14,7 +13,7 @@ function Feedback(){
 
     return(
         <><h1>Feedback Page</h1>
-        <p className="home_p">Here you can provide feedback on the tutoring session.</p>
+        <p className="home_p">Here you'll get feedback from your session.</p>
         <div className="feedback-div">
             <p>{feedback}</p>
         </div>

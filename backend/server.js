@@ -132,7 +132,8 @@ async function generateFeedback(req, res){
     Your feedback should be specific, constructive, and actionable.
     The feedback should be in the form of a string with no other text. 
     Here are the messages:
-    ${messages.map(m => `${m.sender}: ${m.message}`).join("\n")}`;
+    ${messages.map(m => `${m.sender}: ${m.message}`).join("\n")}
+    If the messages are not enough to generate feedback, return "Not enough information to generate feedback."`;
 
     const completion = await client.chat.completions.create({
         model: "gpt-4.1-mini",
