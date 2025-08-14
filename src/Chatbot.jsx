@@ -5,7 +5,6 @@ import {
   MessageList,
   Message as CSMessage,
   MessageInput,
-  TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
@@ -19,6 +18,7 @@ function Chatbox() {
   const [grade, setGrade] = useState("");
   const [subject, setSubject] = useState("");
   const [student, setStudent] = useState(null);
+  const [aiResponse, setAIResponse] = useState(null);
 
   useEffect(() => {
   if (!student) return;
@@ -26,11 +26,20 @@ function Chatbox() {
   console.log(student);
   }, [student]);
 
+  useEffect(() => {
+    if (!aiResponse) {
+      console.log("No AI response yet");
+      return;
+    }
+    handleComputerSend(aiResponse);
+    setAIResponse(null); // Reset AI response after sending
+  }, [aiResponse]);
+
   const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
     , "College", "Graduate School"
   ];
 
-  const handleUserSend = (innerMessage) => {
+  const handleUserSend = async (innerMessage) => {
     setMessages([
       ...messages,
       {
@@ -39,6 +48,25 @@ function Chatbox() {
         direction: "outgoing"
       }
     ]);
+
+    const res = await fetch("http://localhost:4000/generateaimessage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: messages,
+        student: student || {}
+      }),
+    });
+
+    if(!res.ok) {
+      console.error("Failed to generate AI message");
+      return;
+    }
+    const data = await res.json();
+    setAIResponse(data.message);
+    
   };
 
   const handleComputerSend = (innerMessage) => {
@@ -46,7 +74,7 @@ function Chatbox() {
       ...messages,
       {
         message: innerMessage,
-        sender: "computer",
+        sender: "assistant",
         direction: "incoming"
       }
     ]);
