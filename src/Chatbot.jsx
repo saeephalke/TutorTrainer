@@ -1,3 +1,5 @@
+import { useState, useEffect, use } from "react";
+import { useNavigate } from "react-router";
 import {
   MainContainer,
   ChatContainer,
@@ -8,8 +10,6 @@ import {
 
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./Chatbot.css"; 
-import { useState } from "react";
-import { useEffect } from "react";
 
 function Chatbox() {
   const [messages, setMessages] = useState([]);
@@ -18,6 +18,8 @@ function Chatbox() {
   const [subject, setSubject] = useState("");
   const [student, setStudent] = useState(null);
   const [aiResponse, setAIResponse] = useState(null);
+  const [feedback, setFeedback] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
   if (!student) return;
@@ -32,6 +34,12 @@ function Chatbox() {
     handleComputerSend(aiResponse);
     setAIResponse(null); 
   }, [aiResponse]);
+
+  useEffect(() => {
+    if(feedback) {
+      navigate('/feedback', { state: { feedbackMsg: feedback } });
+    }
+  }, [feedback, navigate]);
 
 
   const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
@@ -119,6 +127,10 @@ function Chatbox() {
     setSubject("");
   };
 
+  const generateFeedback = async () => {
+    setFeedback("This is a placeholder for feedback generation.");
+  }
+
   return (
     <>
       <header>
@@ -185,15 +197,19 @@ function Chatbox() {
       </div>
 
       <footer className="buttons-div">
-        <button onClick={() => window.location.href = '/'}> 
+        <button onClick={() => navigate('/')}> 
           Go Home
         </button>
         <button onClick={() => handleClearChat()}>
           Clear Chat
         </button>
-        <button>
+        <button onClick={() => 
+          {
+            generateFeedback();
+          }}>
           Get Feedback
-        </button></footer>
+        </button>
+      </footer>
       
       </>
   );
