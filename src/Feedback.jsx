@@ -15,7 +15,7 @@ function Feedback(){
     return(
         <><h1>Feedback Page</h1>
         <p className="home_p">Here you can provide feedback on the tutoring session.</p>
-        <div className="feedback-container">
+        <div className="feedback-div">
             <p>{feedback}</p>
         </div>
 

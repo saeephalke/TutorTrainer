@@ -126,36 +126,34 @@ async function generateAIMessage(req, res) {
 }   
 
 async function generateFeedback(req, res){
-    const {messages} = req.body.messages || [];
+    const messages = Array.isArray(req.body.messages) ? req.body.messages : [];
     const prompt = `The given messages are a chat between a tutor and a student. The user is the tutor, and the assistant is the student.
     Your job is to analyze the chat and provide feedback on the tutor's performance. Giving them specific feedback on what they did well, and what they could improve on.
     Your feedback should be specific, constructive, and actionable.
-    The feedback should be in the form of a JSON object with the following structure:
-    {
-        "positive_feedback": "string",
-        "negative_feedback": "string"
-    }
+    The feedback should be in the form of a string with no other text. 
     Here are the messages:
     ${messages.map(m => `${m.sender}: ${m.message}`).join("\n")}`;
 
-    const completion = await client.chat.complettions.create({
+    const completion = await client.chat.completions.create({
         model: "gpt-4.1-mini",
         messages: [{
             role: "user",
             content: prompt
         }], 
-        response_format: { type: "json_object" },
+        response_format: { type: "text" },
         temperature: 1,
         max_tokens: 500,
     });
     let feedback;
 
     try{
-        feedback = JSON.parse(completion.choices[0].message.content);
+        feedback = String(completion.choices[0].message.content).trim();
     } catch {
-        feedback = { system_prompt: completion.choices[0].message.content };
+        feedback = "Failed to generate feedback";
     }
-    return res.json(feedback);
+    return res.json({
+        message: feedback
+    });
 }
 
 

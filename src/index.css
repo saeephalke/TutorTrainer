@@ -98,3 +98,16 @@ input, select{
   color:#888;
 }
 
+.feedback-div{
+  display: flex;
+  gap: 1rem;  
+  margin: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #2e3034;
+  color: #e6e7eb;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15%;
+  margin-left: 15%;
+}

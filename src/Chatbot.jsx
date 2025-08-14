@@ -119,6 +119,28 @@ function Chatbox() {
     }
   }
 
+  const generateFeedback = async () => {
+    try {
+      const res = await fetch("http://localhost:4000/generatefeedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messages }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to generate feedback");
+      }
+
+      const data = await res.json();
+      setFeedback(data.message);
+    } catch (error) {
+      console.error("Error generating feedback:", error);
+      setFeedback("An error occurred while generating feedback.");  
+    }
+  }
+
   const handleClearChat = () => {
     setMessages([]);
     setStudent(null);
@@ -126,10 +148,6 @@ function Chatbox() {
     setGrade("");
     setSubject("");
   };
-
-  const generateFeedback = async () => {
-    setFeedback("This is a placeholder for feedback generation.");
-  }
 
   return (
     <>
