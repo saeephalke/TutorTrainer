@@ -153,6 +153,7 @@ function Chatbox() {
   return (
     <>
     <Header/>
+    <div className="page-fade">
       <div>
         <h2>Select a grade level and subject</h2>
 
@@ -216,7 +217,7 @@ function Chatbox() {
 
       </div>
 
-      <footer className="buttons-div">
+      <div className="buttons-div">
         <button onClick={() => navigate('/')}> 
           Go Home
         </button>
@@ -229,7 +230,7 @@ function Chatbox() {
           }}>
           Get Feedback
         </button>
-      </footer>
+      </div> </div>
       
       </>
   );

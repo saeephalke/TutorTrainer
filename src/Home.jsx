@@ -3,7 +3,9 @@ import Header from "./Header";
 function Home() {
     const navigate = useNavigate();
     return (
-        <><Header></Header><div className="home">
+        <><Header></Header>
+        
+        <div className="page-fade">
             <h1>Welcome to The Tutor Trainer</h1>
             <h2>Your AI-powered tutoring assistant</h2>
             <br />

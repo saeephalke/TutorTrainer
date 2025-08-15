@@ -36,6 +36,8 @@ function Feedback(){
     return(
         <>
         <Header/>
+        <div className="page-fade">
+        
         <h1>Feedback Time</h1>
         <p className="home_p">Here you'll get feedback from your session.</p>
         <div className="feedback-div">
@@ -52,7 +54,7 @@ function Feedback(){
         <button onClick={handleDownload}>
             Download Feedback
         </button>
-        </div>
+        </div></div>
         </>
     )
 }
