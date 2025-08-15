@@ -17,6 +17,7 @@ function studentGeneratorPrompt({grade, subject}){
     The student should have the following traits:
     - Grade Level: ${grade}
     - Subject being tutored in: ${subject}
+    - For branding purposes, the student's name should start with the letter "T" (e.g., Timmy, Tiana, etc.)
     - Switch up the background of the student, they can be from any country, have any interests, and have any quirks, be any gender, have different educational backgrounds
     - The JSON object should have the following structure:
         {
@@ -70,7 +71,7 @@ async function generateAIMessage(req, res) {
     You must act as the Persona, and do not act as if you are tutoring this person. YOU ASK FOR HELP, DO NOT OFFER HELP. YOU MUST STAY IN CHARACTER AS THE STUDENT (IMPORTANT).
 
             # Persona
-            Name: ${student.name || "Sofia"}
+            Name: ${student.name || "Tiana"}
             Age: ${student.age || "12"}
             Grade: ${student.grade || "7th Grade"}
             Subject: ${student.tutor_subject || "Art"}
@@ -157,13 +158,13 @@ async function generateFeedback(req, res){
     });
 }
 
-
+//Endpoints for API
 app.post('/generatestudent', generateStudent);
 
 app.post('/generateaimessage', generateAIMessage);
 
 app.post('/generatefeedback', generateFeedback);
-//Endpoints for API
+
 app.get('/', (req, res)=> res.json("hello"));
 
 //on connect, send a listening message

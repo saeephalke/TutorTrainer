@@ -1,14 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Feedback(){
     const navigate = useNavigate();
     const [feedback, setFeedback] = useState(() => {
-        if (window.history.state.usr.feedbackMsg) {
-            return window.history.state.usr.feedbackMsg;
+        try{
+            if (window.history.state.usr.feedbackMsg) {
+                return window.history.state.usr.feedbackMsg;
+            }
+            return "Not enough information to generate feedback.";
+        } catch (error) {
+            console.error("Error accessing feedback from history state:", error);
+            return "Not enough information to generate feedback.";
         }
-        return "Not enough information to generate feedback.";
+        
     });
 
     const handleDownload = () => {
@@ -28,7 +34,9 @@ function Feedback(){
     };
 
     return(
-        <><h1>Feedback Time</h1>
+        <>
+        <Header/>
+        <h1>Feedback Time</h1>
         <p className="home_p">Here you'll get feedback from your session.</p>
         <div className="feedback-div">
             <p>{feedback}</p>

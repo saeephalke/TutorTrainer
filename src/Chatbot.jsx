@@ -7,6 +7,7 @@ import {
   Message as CSMessage,
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
+import Header from "./Header";
 
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./Chatbot.css"; 
@@ -151,7 +152,8 @@ function Chatbox() {
 
   return (
     <>
-      <header>
+    <Header/>
+      <div>
         <h2>Select a grade level and subject</h2>
 
         <div className="buttons-div">
@@ -185,7 +187,7 @@ function Chatbox() {
         </button>
       </div>
 
-      </header>
+      </div>
       <div className="chatbox-wrapper">
         <MainContainer className="chatbox-main">
           <ChatContainer>
