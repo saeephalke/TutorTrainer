@@ -2,6 +2,8 @@
 
 Thank you for checking my project. The Tutor Trainer is a react web-app built using vite made to help prospective tutors without any tutoring experiences learn using AI. Tutoring is a skill, and having the ability to communicate your thoughts effectively is a difficult skill to master. While this app can't replace the experience gained from tutoring real students and shouldn't be used as a training program, it does help users retain skills and learn how to compress complicated ideas into words at varying levels of learning. 
 
+If you want to run it, you can here: https://thetutortrainer.onrender.com
+
 ## Features
 
 - Customizable personas
