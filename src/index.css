@@ -28,63 +28,70 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: #2C2C34;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #D8D8F6
 }
 
 h2{
   font-size: 1.8em;
   line-height: 1.1;
   margin-top: 1rem;
+  color: #be9edb;
+  margin-bottom: 0.25rem;
 }
 
 button {
   border-radius: 20px;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #0a0a0a;
+  background-color: #6D5F6D;
+  color: #FFFFFF;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
   height: 40px;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #5959D9;
+  background-color: #B18FCF;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 
 input, select{
-  border: 0px solid #ccc;
+  border: 1.5px solid transparent;
   font-size: 16px;
   border-radius: 30px;
   height: 40px;
   padding: 0 20px;
-  background-color: #0a0a0a;
+  background-color: #6D5F6D;
+  color: #FFFFFF;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+input::placeholder,
+select::placeholder {
+  color: #eae2f2;
+  opacity: 0.7;
+}
+
+input:hover, select:hover {
+  border-color: #5959D9;
+  background-color: #B18FCF;
 }
 
 .home_p{
-  color: #888;
+  color: #9a78b7;
   margin: 1.5rem;
   margin-right: 20%;
   margin-left: 20%;
@@ -104,7 +111,7 @@ input, select{
   margin: 1.5rem;
   padding: 1.5rem;
   border-radius: 20px;
-  background-color: #2e3034;
+  background-color: #494850;
   color: #e6e7eb;
   justify-content: center;
   align-items: center;
@@ -124,8 +131,12 @@ header {
 }
 
 img {
-  height: 60px !important;
-  width: 60px !important;
+  height: 70px !important;
+  width: 70px !important;
   margin-right: 10px;
   border-radius: 10px;
+}
+
+.chatbot-label{
+  color: #D8D8F6
 }

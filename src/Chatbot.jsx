@@ -154,8 +154,7 @@ function Chatbox() {
     <Header/>
     <div className="page-fade">
       <div>
-        <h2>Select a grade level and subject</h2>
-
+        <h2 className="chatbot-label">Select a grade level and subject</h2>
         <div className="buttons-div">
         <select
           value={grade}
@@ -206,7 +205,7 @@ function Chatbox() {
             </MessageList>
             <MessageInput
               onSend={handleUserSend}
-              placeholder="Type message here"
+              placeholder="Say something to your student..."
               attachButton={false}
               sendDisabled={false} // keep send via Enter
             />

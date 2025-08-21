@@ -5,11 +5,12 @@
   width: 900px;
   height: 70vh;
   min-height: 520px;
-  background: #0c0a32;
+  background: #494850;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,.35);
 }
+
 
 .cs-main-container,
 .cs-chat-container,
@@ -23,7 +24,7 @@
 .cs-message-input {
   border: none !important;
   outline: none !important;
-  background-color: #1a1a1a !important; 
+  background-color: #494850 !important; 
   box-shadow: none !important;
 }
 
@@ -36,12 +37,12 @@
 }
 .chatbot-message-list,
 .cs-message-list {
-  background: #1a1a1a !important;
+  background: #1C1C21 !important;
   padding: 12px 12px 0;
 }
 
 .cs-message--incoming .cs-message__content {
-  background: #2e3034 !important; 
+  background: #494850 !important; 
   color: #ffffff !important;
   border-radius: 24px !important;
   padding: 10px 15px !important;
@@ -50,7 +51,7 @@
   text-align: left;
 }
 .cs-message--outgoing .cs-message__content {
-  background: #7BA7D3 !important;  
+  background: #B18FCF !important;  
   color: #ffffff !important;
   border-radius: 24px !important;
   padding: 10px 15px !important;
@@ -61,7 +62,7 @@
 
 .cs-typing-indicator,
 .cs-message-list__typing-indicator-container {
-  background: #2e3034 !important;
+  background: #1C1C21 !important;
   color: #a7abb1 !important;
   border-top: 1px solid #3a3f46 !important;
   width: 100%;
@@ -69,7 +70,7 @@
 
 .chatbot-input,
 .cs-message-input {
-  background: #0a0a0a !important;
+  background: #09090B !important;
   border-top: 1px solid #242424 !important;
   padding: 12px !important;
 }
@@ -80,14 +81,35 @@
 }
 
 .cs-message-input__content-editor {
-  background: #2e3034 !important;
+  background: #3b333b !important;
   color: #e6e7eb !important;
-  border: 1px solid #242424 !important;
+  border: 1.5px solid #242424;
   border-radius: 9999px !important;
   padding: 10px 14px !important;
-  box-shadow: none !important;
+  box-shadow: none;
   text-align: left !important;
+  transition: border-color 0.25s, background-color 0.25s;
 }
+
+.cs-message-input__content-editor-wrapper {
+  background-color: #856d9a !important;
+  border-radius: 9999px;
+}
+
+.cs-message-input__content-editor:hover,
+.cs-message-input__content-editor:focus-within {
+  background-color: #544263 !important;
+  border-color: #5959D9 !important;
+}
+
+.cs-message-input__content-editor[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  display: block;               
+  color: #ffffff !important;
+  opacity: 1 !important;
+  pointer-events: none;           
+}
+
 .cs-message-input__content-editor:focus {
   outline: none !important;
   border-color: #242424 !important; 
@@ -115,7 +137,7 @@
 }
 
 .cs-message-input__content-editor-wrapper {
-  background: #0a0a0a !important;            
+  background: #09090B !important;            
 
   box-shadow: none !important;
   overflow: hidden !important;                
@@ -124,17 +146,11 @@
 .cs-message-input__content-editor-wrapper:after {
   content: none !important;                  
 }
-.cs-message-input__content-editor-wrapper:focus-within {
-  border-color: #1a1a1a !important;          
-  box-shadow: none !important;
-}
 
 .chatbox-main,
 .chatbot-message-list,
 .cs-message-list,
 .cs-message-input,
-.cs-message-input__content-editor-wrapper,
-.cs-message-input__content-editor,
 .cs-typing-indicator,
 .cs-message-list__typing-indicator-container,
 .cs-message--incoming .cs-message__content,
@@ -148,4 +164,21 @@
 }
 .cs-message-list__typing-indicator-container {
   border-top: 1px solid #1a1a1a !important; 
+}
+/* set the icon color via the button's color */
+.cs-button--send {
+  color: #B18FCF !important;
+  transition: color .25s ease-in-out;
+}
+
+/* hover color */
+.cs-button--send:hover {
+  color: #fafafa !important;
+}
+
+/* make the Font Awesome SVG inherit that color */
+.cs-button--send svg,
+.cs-button--send svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important; /* safety if the icon uses stroke */
 }
