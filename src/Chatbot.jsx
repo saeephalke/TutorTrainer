@@ -13,8 +13,8 @@ import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./Chatbot.css"; 
 
 function Chatbox() {
-  const [messages, setMessages] = useState([]);
 
+  const [messages, setMessages] = useState([]);
   const [grade, setGrade] = useState("");
   const [subject, setSubject] = useState("");
   const [student, setStudent] = useState(null);
@@ -23,9 +23,8 @@ function Chatbox() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  if (!student) return;
-  handleComputerSend(`Hello I'm ${student.name}, a ${student.age}-year-old in ${student.grade} learning ${student.tutor_subject}.`);
-  console.log(student);
+    if (!student) return;
+      handleComputerSend(`Hello I'm ${student.name}, a ${student.age}-year-old in ${student.grade} learning ${student.tutor_subject}.`);
   }, [student]);
 
   useEffect(() => {
@@ -43,8 +42,8 @@ function Chatbox() {
   }, [feedback, navigate]);
 
 
-  const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade"
-    , "College", "Graduate School"
+  const gradeLevels = ["Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade", 
+    "6th Grade", "7th Grade", "8th Grade", "9th Grade", "10th Grade", "11th Grade", "12th Grade", "College", "Graduate School"
   ];
 
 
@@ -60,7 +59,7 @@ function Chatbox() {
     setMessages(newHistory);
 
 
-    const res = await fetch("http://localhost:4000/generateaimessage", {
+    const res = await fetch("https://tutortrainer.onrender.com/generateaimessage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +100,7 @@ function Chatbox() {
     handleComputerSend(`Generating student persona in ${grade} studying ${subject}...`);
 
     try{
-      const res = await fetch("http://localhost:4000/generatestudent", {
+      const res = await fetch("https://tutortrainer.onrender.com/generatestudent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +121,7 @@ function Chatbox() {
 
   const generateFeedback = async () => {
     try {
-      const res = await fetch("http://localhost:4000/generatefeedback", {
+      const res = await fetch("https://tutortrainer.onrender.com/generatefeedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
