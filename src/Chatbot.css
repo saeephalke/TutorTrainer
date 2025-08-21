@@ -2,13 +2,24 @@
   --cs-primary: #242424; 
 }
 .chatbox-main {
-  width: 900px;
-  height: 70vh;
-  min-height: 520px;
+  width: 90vw;
+  max-width: 900px;
+  margin: 32px auto;
   background: #494850;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  justify-self: center;
+  min-width: 320px;
+  min-height: 500px; 
+  height: 70vh;
+}
+@media (max-width: 600px) {
+  .chatbox-main {
+    max-width: 98vw;
+    margin: 16px 1vw;
+    border-radius: 12px;
+  }
 }
 
 

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #2C2C34;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,15 +23,15 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin-top: 50px;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0 1rem;
   background: #2C2C34;
 }
 
 h1 {
+  margin-top: 15%;
   font-size: 3.2em;
   line-height: 1.1;
   color: #D8D8F6
@@ -48,7 +48,7 @@ h2{
 button {
   border-radius: 20px;
   border: 1.5px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.6em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -56,7 +56,7 @@ button {
   color: #FFFFFF;
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s;
-  height: 40px;
+
 }
 button:hover {
   border-color: #5959D9;
@@ -68,15 +68,23 @@ button:focus-visible {
 }
 
 
-input, select{
+input, select {
   border: 1.5px solid transparent;
   font-size: 16px;
   border-radius: 30px;
-  height: 40px;
-  padding: 0 20px;
+  padding: 0.6em 1em;
   background-color: #6D5F6D;
   color: #FFFFFF;
   transition: border-color 0.25s, background-color 0.25s;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  input, select {
+    font-size: 14px;
+    padding: 0.5em 0.8em;
+  }
 }
 
 input::placeholder,
@@ -99,10 +107,14 @@ input:hover, select:hover {
 
 .buttons-div{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;  
-  margin: 1.5rem;
-  color:#888;
+  margin: 1.5rem auto;
+  color: #888;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .feedback-div{
@@ -127,12 +139,15 @@ header {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 20px;
+  padding: 10px 10px 0 10px;
+  z-index: 1000;
+  width:100%;
+  background: #2C2C34;
 }
 
 img {
-  height: 70px !important;
-  width: 70px !important;
+  height:50px !important;
+  width: 50px !important;
   margin-right: 10px;
   border-radius: 10px;
 }
