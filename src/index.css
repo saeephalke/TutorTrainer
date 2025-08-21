@@ -150,6 +150,12 @@ img {
   width: 50px !important;
   margin-right: 10px;
   border-radius: 10px;
+  border: 1.5px solid #2C2C34;
+  transition: border-color 0.25s;
+}
+
+img:hover {
+  border-color: #535bf2;
 }
 
 .chatbot-label{

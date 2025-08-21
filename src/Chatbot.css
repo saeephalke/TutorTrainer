@@ -180,11 +180,16 @@
 .cs-button--send {
   color: #B18FCF !important;
   transition: color .25s ease-in-out;
+  border: 1.5px solid #09090B !important;
+  transition: border-color .25s, background-color .25s, color .25s;
 }
 
 /* hover color */
 .cs-button--send:hover {
   color: #fafafa !important;
+  background-color: #B18FCF !important;
+  border-color: #7676ea !important;
+  opacity: 1 !important;
 }
 
 /* make the Font Awesome SVG inherit that color */
